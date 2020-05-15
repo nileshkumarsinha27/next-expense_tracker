@@ -1,0 +1,24 @@
+@import '../../style/variables.scss';
+.headerContainer {
+  width: 100%;
+  height: 60px;
+  box-sizing: border-box;
+  background: $primary-color;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: fixed;
+  top: 0;
+  box-shadow: 0 2px 4px -1px $box-shadow2, 0 4px 5px 0 $box-shadow1,
+    0 1px 10px 0 $box-shadow;
+  .headerImage {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    box-sizing: border-box;
+  }
+  .headingText {
+    color: $white-color;
+    font-size: 32px;
+  }
+}
