@@ -1,13 +1,15 @@
+import ROUTES from './routes.constants';
+
 const CONSTANTS = {
   NAVBAR: {
     MENU_DATA: [
       {
-        link: '/',
+        link: ROUTES.HOME,
         title: 'Home'
       },
       {
-        link: '/expenses',
-        title: 'Expense Link'
+        link: ROUTES.EXPENSES,
+        title: 'Expenses'
       }
     ]
   }
