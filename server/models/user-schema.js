@@ -1,3 +1,5 @@
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable func-names */
 /**
  * Importing the dependencies
  */
@@ -5,7 +7,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const { Schema } = mongoose;
-const SERVER_CONSTANTS = require('../server.constants');
+const SALT_WORK_FACTOR = 10;
 
 /**
  * Defining the user schema
@@ -25,7 +27,7 @@ const UserSchema = new Schema({
   }
 });
 
-UserSchema.pre('save', next => {
+UserSchema.pre('save', function(next) {
   const user = this;
   /**
    * only hash the password if it has been modified (or is new)
@@ -33,26 +35,20 @@ UserSchema.pre('save', next => {
   if (!user.isModified('password')) return next();
 
   /**
-   * generate a salt
+   * hash the password using our new salt
    */
-  bcrypt.genSalt(SERVER_CONSTANTS.SALT_WORK_FACTOR, (err, salt) => {
-    if (err) return next(err);
-    /**
-     * hash the password using our new salt
-     */
-    bcrypt.hash(user.password, salt, (error, hash) => {
-      if (error) return next(error);
+  bcrypt.hash(user.password, SALT_WORK_FACTOR, function(error, hash) {
+    if (error) return next(error);
 
-      /**
-       * override the cleartext password with the hashed one
-       */
-      user.password = hash;
-      next();
-    });
+    /**
+     * override the cleartext password with the hashed one
+     */
+    user.password = hash;
+    next();
   });
 });
 
-UserSchema.methods.comparePassword = (candidatePassword, cb) => {
+UserSchema.methods.comparePassword = function(candidatePassword, cb) {
   bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
     if (err) return cb(err);
     cb(null, isMatch);
