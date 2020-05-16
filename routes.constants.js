@@ -1,5 +1,6 @@
 module.exports = {
-  HOME: '/',
+  DEFAULT: '/',
+  HOME: '/home',
   EXPENSES: '/expenses',
   SIGN_UP: '/signUp',
   API_ROUTES: '/api',

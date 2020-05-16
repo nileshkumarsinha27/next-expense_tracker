@@ -19,7 +19,7 @@ class InputBar extends Component {
   /**
    * Function the handle the change event for the input component
    */
-  handleInputChange = ({ value }) => {
+  handleInputChange = ({ target: { value } }) => {
     this.setState(
       {
         inputVal: value

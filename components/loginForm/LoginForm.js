@@ -38,9 +38,18 @@ class LoginForm extends Component {
   };
 
   /**
+   * Function to get a list of all the name values of the form
+   */
+  getFormInputNames = () =>
+    CONSTANTS.LOGIN_FORM.FORM_DATA.map(formElem => formElem.name);
+
+  /**
    * Function to check whether button is enabled or disabled
    */
-  getDisabledStatus = () => true;
+  getDisabledStatus = () =>
+    !this.getFormInputNames().every(
+      elem => this.state && this.state[elem] && this.state[elem] !== ''
+    );
 
   /**
    * Function to render the form Elements

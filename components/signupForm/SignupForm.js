@@ -38,9 +38,18 @@ class LoginForm extends Component {
   };
 
   /**
+   * Function to get a list of all the name values of the form
+   */
+  getFormInputNames = () =>
+    CONSTANTS.SIGN_UP_FORM.FORM_DATA.map(formElem => formElem.name);
+
+  /**
    * Function to check whether button is enabled or disabled
    */
-  getDisabledStatus = () => true;
+  getDisabledStatus = () =>
+    !this.getFormInputNames().every(
+      elem => this.state && this.state[elem] && this.state[elem] !== ''
+    );
 
   /**
    * Function to render the form Elements
@@ -83,8 +92,8 @@ class LoginForm extends Component {
             {this.renderFormElements()}
           </form>
           <div className={Styles.signupButtonSection}>
-            <Link href={ROUTES.HOME}>
-              <a href={ROUTES.HOME} className={Styles.signUpText}>
+            <Link href={ROUTES.DEFAULT}>
+              <a href={ROUTES.DEFAULT} className={Styles.signUpText}>
                 {CONSTANTS.SIGN_UP_FORM.BACK}
               </a>
             </Link>

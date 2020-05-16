@@ -18,10 +18,10 @@ const CONSTANTS = {
     FORM_HEADING: 'Please enter credentials',
     FORM_DATA: [
       {
-        placeHolder: 'Enter User Name',
+        placeHolder: 'Enter Email',
         type: 'text',
-        name: 'userName',
-        labelValue: 'User Name'
+        name: 'email',
+        labelValue: 'Email'
       },
       {
         placeHolder: 'Enter Password',
@@ -43,6 +43,12 @@ const CONSTANTS = {
         type: 'text',
         name: 'userName',
         labelValue: 'User Name'
+      },
+      {
+        placeHolder: 'Enter Email',
+        type: 'text',
+        name: 'email',
+        labelValue: 'Email'
       },
       {
         placeHolder: 'Enter Password',
