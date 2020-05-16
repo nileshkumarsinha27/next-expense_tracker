@@ -14,7 +14,7 @@ const UserSchema = new Schema({
   name: {
     type: String
   },
-  email: {
+  emailId: {
     type: String
   },
   password: {
