@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import HeadingComponent from '../headingComponent/HeadingComponent';
 import ImageComponent from '../imageComponent/ImageComponent';
 import appIcon from '../../assets/images/appIcon.svg';
+import CONSTANTS from '../../constants';
 import Styles from './sideNav.module.scss';
 
 /**
@@ -39,7 +40,7 @@ const SideNav = ({ customClass, navMenuData, ...props }) => {
           customClass={Styles.headerImage}
         />
         <HeadingComponent
-          title="Expense Tracker"
+          title={CONSTANTS.APP_TITLE}
           customClass={Styles.headingText}
         />
       </div>

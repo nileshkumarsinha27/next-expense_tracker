@@ -1,11 +1,11 @@
 /**
  * Importing the dependencies
  */
-import LoginForm from '../components/loginForm/LoginForm';
+import SignupForm from '../components/signupForm/SignupForm';
 
 /**
  * The index route of the application
  */
-const Login = () => <LoginForm />;
+const Login = () => <SignupForm />;
 
 export default Login;
