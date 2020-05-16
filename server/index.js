@@ -13,7 +13,7 @@ const database = require('./database/database');
 /**
  * Defining the variables
  */
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3000;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
@@ -32,7 +32,8 @@ app.prepare().then(() => {
   mongoose.connect(
     database.dbSource,
     {
-      useNewUrlParser: true
+      useNewUrlParser: true,
+      useUnifiedTopology: true
     }
   );
   /**

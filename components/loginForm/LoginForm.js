@@ -2,6 +2,7 @@
  * Importing the dependencies
  */
 import { Component } from 'react';
+import Head from 'next/head';
 import Link from 'next/link';
 import CONSTANTS from '../../constants';
 import ROUTES from '../../routes.constants';
@@ -59,6 +60,10 @@ class LoginForm extends Component {
   render() {
     return (
       <div className={Styles.loginFormContainer}>
+        <Head>
+          <title>Expense Tracker</title>
+          <link rel="icon" href="/favicon.svg" />
+        </Head>
         <div className={Styles.leftSection}>
           <ImageComponent src={appIcon} alt="app" />
           <HeadingComponent

@@ -3,6 +3,7 @@
  */
 import { Component } from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
 import CONSTANTS from '../../constants';
 import ROUTES from '../../routes.constants';
 import InputBar from '../inputBar/InputBar';
@@ -59,6 +60,10 @@ class LoginForm extends Component {
   render() {
     return (
       <div className={Styles.loginFormContainer}>
+        <Head>
+          <title>Expense Tracker</title>
+          <link rel="icon" href="/favicon.svg" />
+        </Head>
         <div className={Styles.leftSection}>
           <ImageComponent src={appIcon} alt="app" />
           <HeadingComponent
