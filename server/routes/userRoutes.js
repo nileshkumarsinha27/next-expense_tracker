@@ -7,9 +7,12 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const { isDataExists } = require('../utils/utils');
 const SERVER_CONSTANTS = require('../server.constants');
+const middleware = require('../middlewares/auth.middleware');
 
 const router = express.Router();
 const User = require('../models/user-schema');
+
+const { checkToken } = middleware;
 
 /**
  * Defining the user routes
@@ -95,5 +98,17 @@ router.route('/login').post(({ body: { emailId, password } }, res) => {
     });
   });
 });
+
+router
+  .route('/get-expense-details')
+  .get(checkToken, ({ query: { id } }, res) => {
+    User.findById(id, async (err, { expenseList }, next) => {
+      if (err) {
+        next(err);
+      } else {
+        await res.json({ expenseList });
+      }
+    });
+  });
 
 module.exports = router;

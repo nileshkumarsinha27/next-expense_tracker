@@ -28,3 +28,15 @@ Request Body:
   "password": "abcd"
 }
 ```
+
+- Get expense details
+  GET
+  /api/get-expense-details/:id
+
+  Response :
+
+```json
+{
+  "expenseList": "[]"
+}
+```
