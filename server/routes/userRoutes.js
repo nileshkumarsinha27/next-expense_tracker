@@ -48,7 +48,6 @@ router.route('/signup').post(({ body: { name, emailId, password } }, res) => {
                 user: {
                   name: userData.name,
                   emailId: userData.emailId,
-                  expenseList: userData.expenseList,
                   id: userData._id
                 }
               });
@@ -86,7 +85,6 @@ router.route('/login').post(({ body: { emailId, password } }, res) => {
                 user: {
                   name: userData.name,
                   emailId: userData.emailId,
-                  expenseList: userData.expenseList,
                   id: userData._id
                 }
               });
