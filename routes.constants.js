@@ -4,5 +4,6 @@ module.exports = {
   EXPENSES: '/expenses',
   SIGN_UP: '/signUp',
   API_ROUTES: '/api',
+  VIEW_EXPENSES: '/view',
   ALL: '*'
 };

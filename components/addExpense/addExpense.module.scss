@@ -1,0 +1,19 @@
+@import '../../style/variables.scss';
+.addExpenseContainer {
+  margin: 60px 0 0 0;
+}
+.addExpenseHeader {
+  margin: 20px 0 0 0;
+  color: $primary-color;
+  font-size: 20px;
+}
+.addExpenseBtn {
+  margin: 20px 0 0 0;
+  background-color: $primary-color;
+  color: $white-color;
+  border: none;
+  width: 75px;
+  height: 40px;
+  border-radius: 5px;
+  cursor: pointer;
+}

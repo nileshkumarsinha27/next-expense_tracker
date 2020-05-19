@@ -10,7 +10,11 @@ const CONSTANTS = {
       },
       {
         link: ROUTES.EXPENSES,
-        title: 'Expenses'
+        title: 'Add Expenses'
+      },
+      {
+        link: ROUTES.VIEW_EXPENSES,
+        title: 'View Expenses'
       }
     ]
   },
@@ -66,6 +70,7 @@ const CONSTANTS = {
     AUTOCOMPLETE_VALUE: 'off',
     SIGN_UP: 'Sign up',
     BACK: 'Back'
-  }
+  },
+  SUBMIT: 'Submit'
 };
 export default CONSTANTS;

@@ -47,6 +47,7 @@ class InputBar extends Component {
           id={name}
           name={name}
           className={Styles.inputComponent}
+          type="text"
         />
       </Fragment>
     );
