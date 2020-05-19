@@ -31,7 +31,7 @@ Request Body:
 
 - Get expense details
   GET
-  /api/get-expense-details/:id
+  /api/users/get-expense-details/:id
 
   Response :
 
