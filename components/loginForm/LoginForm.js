@@ -2,15 +2,17 @@
  * Importing the dependencies
  */
 import { Component } from 'react';
-import Head from 'next/head';
 import Link from 'next/link';
+import Router from 'next/router';
 import CONSTANTS from '../../constants';
 import ROUTES from '../../routes.constants';
 import InputBar from '../inputBar/InputBar';
 import ImageComponent from '../imageComponent/ImageComponent';
 import HeadingComponent from '../headingComponent/HeadingComponent';
 import ParagraphComponent from '../paragraphComponent/ParagraphComponent';
+import HeadComponent from '../head/Head';
 import Button from '../button/Button';
+import API from '../../api.routes';
 import Styles from './loginForm.module.scss';
 import appIcon from '../../assets/images/appIconWhite.svg';
 
@@ -19,11 +21,39 @@ import appIcon from '../../assets/images/appIconWhite.svg';
  * @extends Component
  */
 class LoginForm extends Component {
+  componentDidMount() {
+    if (localStorage.getItem('token')) {
+      this.redirectToHome();
+    }
+  }
+
+  /**
+   * Function to push the route to the index route of the application
+   */
+  redirectToHome = () => Router.push(ROUTES.HOME);
+
   /**
    * Submit handler for login form
    */
   handleSubmit = e => {
     e.preventDefault();
+  };
+
+  /**
+   * Click handler for login form
+   */
+
+  handleLoginClick = async () => {
+    const res = await fetch(API.LOGIN, {
+      method: 'POST',
+      body: JSON.stringify(this.state),
+      headers: { 'Content-Type': 'application/json' }
+    });
+    const json = await res.json();
+    if (json.success) {
+      localStorage.setItem('token', json.token);
+      this.redirectToHome();
+    }
   };
 
   /**
@@ -69,10 +99,7 @@ class LoginForm extends Component {
   render() {
     return (
       <div className={Styles.loginFormContainer}>
-        <Head>
-          <title>Expense Tracker</title>
-          <link rel="icon" href="/favicon.svg" />
-        </Head>
+        <HeadComponent />
         <div className={Styles.leftSection}>
           <ImageComponent src={appIcon} alt="app" />
           <HeadingComponent
@@ -92,6 +119,7 @@ class LoginForm extends Component {
               customClass={Styles.loginButton}
               value={CONSTANTS.LOGIN_FORM.SIGN_IN_BUTTON_VALUE}
               disabled={this.getDisabledStatus()}
+              onClick={this.handleLoginClick}
             />
           </form>
           <div className={Styles.signupSection}>

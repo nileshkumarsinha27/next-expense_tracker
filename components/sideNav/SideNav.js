@@ -2,12 +2,14 @@
  * Importing the dependencies
  */
 import Link from 'next/link';
+import Router from 'next/router';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import HeadingComponent from '../headingComponent/HeadingComponent';
 import ImageComponent from '../imageComponent/ImageComponent';
 import appIcon from '../../assets/images/appIcon.svg';
 import CONSTANTS from '../../constants';
+import ROUTES from '../../routes.constants';
 import Styles from './sideNav.module.scss';
 
 /**
@@ -17,6 +19,20 @@ import Styles from './sideNav.module.scss';
  */
 const SideNav = ({ customClass, navMenuData, ...props }) => {
   /**
+   * Function to handle click event on side nav bar
+   */
+  const handleListItemClick = title => {
+    switch (title) {
+      case CONSTANTS.LOGOUT:
+        localStorage.removeItem('token');
+        Router.push(ROUTES.DEFAULT);
+        break;
+      default:
+        break;
+    }
+  };
+
+  /**
    * Function to render the container class list for the component
    */
   const getContainerClass = () => cx([Styles.sideNavContainer, customClass]);
@@ -24,13 +40,25 @@ const SideNav = ({ customClass, navMenuData, ...props }) => {
    * Function to render the nav menu list items
    */
   const renderNavListItem = () =>
-    navMenuData.map((navMenuItem, index) => (
-      <Link href={navMenuItem.link} key={index}>
-        <li>
-          <a href={navMenuItem.link}>{navMenuItem.title} </a>
+    navMenuData.map((navMenuItem, index) =>
+      navMenuItem.link !== '' ? (
+        <Link href={navMenuItem.link} key={index}>
+          <li>
+            <a href={navMenuItem.link}>{navMenuItem.title} </a>
+          </li>
+        </Link>
+      ) : (
+        <li
+          onClick={() => {
+            handleListItemClick(navMenuItem.title);
+          }}
+          key={index}
+          className={navMenuItem.customClass}
+        >
+          {navMenuItem.title}
         </li>
-      </Link>
-    ));
+      )
+    );
   return (
     <nav className={getContainerClass()} {...props}>
       <div className={Styles.titleContainer}>

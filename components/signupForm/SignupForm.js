@@ -7,6 +7,7 @@ import Head from 'next/head';
 import CONSTANTS from '../../constants';
 import ROUTES from '../../routes.constants';
 import InputBar from '../inputBar/InputBar';
+import HeadComponent from '../head/Head';
 import ImageComponent from '../imageComponent/ImageComponent';
 import HeadingComponent from '../headingComponent/HeadingComponent';
 import ParagraphComponent from '../paragraphComponent/ParagraphComponent';
@@ -69,10 +70,7 @@ class LoginForm extends Component {
   render() {
     return (
       <div className={Styles.loginFormContainer}>
-        <Head>
-          <title>Expense Tracker</title>
-          <link rel="icon" href="/favicon.svg" />
-        </Head>
+        <HeadComponent />
         <div className={Styles.leftSection}>
           <ImageComponent src={appIcon} alt="app" />
           <HeadingComponent

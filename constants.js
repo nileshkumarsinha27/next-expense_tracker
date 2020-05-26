@@ -10,12 +10,9 @@ const CONSTANTS = {
       },
       {
         link: ROUTES.EXPENSES,
-        title: 'Add Expenses'
+        title: 'Expenses'
       },
-      {
-        link: ROUTES.VIEW_EXPENSES,
-        title: 'View Expenses'
-      }
+      { link: '', title: 'Logout', customClass: 'position-bottom' }
     ]
   },
   LOGIN_FORM: {
@@ -24,7 +21,7 @@ const CONSTANTS = {
       {
         placeHolder: 'Enter Email',
         type: 'text',
-        name: 'email',
+        name: 'emailId',
         labelValue: 'Email'
       },
       {
@@ -71,6 +68,6 @@ const CONSTANTS = {
     SIGN_UP: 'Sign up',
     BACK: 'Back'
   },
-  SUBMIT: 'Submit'
+  LOGOUT: 'Logout'
 };
 export default CONSTANTS;

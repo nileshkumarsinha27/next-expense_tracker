@@ -1,10 +1,10 @@
 /**
  * Importing the dependencies
  */
-import Head from 'next/head';
 import PropTypes from 'prop-types';
 import Header from '../header/Header';
 import SideNav from '../sideNav/SideNav';
+import HeadComponent from '../head/Head';
 import Styles from './layout.module.scss';
 import CONSTANTS from '../../constants';
 
@@ -15,10 +15,7 @@ import CONSTANTS from '../../constants';
  */
 const Layout = ({ children, ...props }) => (
   <div className={Styles.layoutContainer} {...props}>
-    <Head>
-      <title>Expense Tracker</title>
-      <link rel="icon" href="/favicon.svg" />
-    </Head>
+    <HeadComponent />
     <main className="main-container">
       <Header />
       <SideNav navMenuData={CONSTANTS.NAVBAR.MENU_DATA} />
