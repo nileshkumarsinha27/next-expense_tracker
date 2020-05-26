@@ -20,6 +20,7 @@ import Styles from './sideNav.module.scss';
 const SideNav = ({ customClass, navMenuData, ...props }) => {
   /**
    * Function to handle click event on side nav bar
+   * @param {string} title
    */
   const handleListItemClick = title => {
     switch (title) {
