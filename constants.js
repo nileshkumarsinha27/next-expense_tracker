@@ -10,7 +10,11 @@ const CONSTANTS = {
       },
       {
         link: ROUTES.EXPENSES,
-        title: 'Expenses'
+        title: 'Add Expenses'
+      },
+      {
+        link: ROUTES.VIEW_EXPENSES,
+        title: 'View Expenses'
       },
       { link: '', title: 'Logout', customClass: 'position-bottom' }
     ]
@@ -68,6 +72,7 @@ const CONSTANTS = {
     SIGN_UP: 'Sign up',
     BACK: 'Back'
   },
+  SUBMIT: 'Submit',
   LOGOUT: 'Logout'
 };
 export default CONSTANTS;
