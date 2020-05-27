@@ -40,3 +40,19 @@ Request Body:
   "expenseList": "[]"
 }
 ```
+
+- Update expense details
+  PUT
+  /api/users/update-expense
+
+  Request Body:
+
+  ```json
+  {
+    "id": "",
+    "expense": {
+      "name": "",
+      "value": ""
+    }
+  }
+  ```
