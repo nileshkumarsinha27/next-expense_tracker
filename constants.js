@@ -2,6 +2,8 @@ import ROUTES from './routes.constants';
 
 const CONSTANTS = {
   APP_TITLE: 'Expense Tracker',
+  LOCAL_STORAGE_TOKEN_NAME: 'token',
+  USER_COOKIE: 'userData',
   NAVBAR: {
     MENU_DATA: [
       {
@@ -42,17 +44,18 @@ const CONSTANTS = {
   },
   SIGN_UP_FORM: {
     FORM_HEADING: 'Please enter your details',
+    PASSWORD_ERROR: "Sorry the passwords don't match",
     FORM_DATA: [
       {
         placeHolder: 'Enter User Name',
         type: 'text',
-        name: 'userName',
+        name: 'name',
         labelValue: 'User Name'
       },
       {
         placeHolder: 'Enter Email',
         type: 'text',
-        name: 'email',
+        name: 'emailId',
         labelValue: 'Email'
       },
       {
@@ -64,7 +67,7 @@ const CONSTANTS = {
       {
         placeHolder: 'Confirm Password',
         type: 'password',
-        name: 'comfirmPassword',
+        name: 'confirmPassword',
         labelValue: 'Confirm Password'
       }
     ],

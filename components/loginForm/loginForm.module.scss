@@ -81,6 +81,7 @@
       color: $white-color;
       padding: 10px 0;
       font-size: 16px;
+      cursor: pointer;
       &:disabled {
         cursor: default;
         background-color: $disabled-color;
@@ -113,6 +114,12 @@
       .loginButton {
         margin: 0;
       }
+    }
+    .errorMessage {
+      color: $error-color;
+      font-size: 13px;
+      font-weight: bold;
+      padding: 10px 0;
     }
   }
 }

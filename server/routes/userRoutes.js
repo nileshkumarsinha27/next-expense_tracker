@@ -52,7 +52,8 @@ router.route('/signup').post(({ body: { name, emailId, password } }, res) => {
                   name: userData.name,
                   emailId: userData.emailId,
                   id: userData._id
-                }
+                },
+                cookieExpiryTime: SERVER_CONSTANTS.TOKEN_EXPIRY_TIME
               });
             }
           }
@@ -89,7 +90,8 @@ router.route('/login').post(({ body: { emailId, password } }, res) => {
                   name: userData.name,
                   emailId: userData.emailId,
                   id: userData._id
-                }
+                },
+                cookieExpiryTime: SERVER_CONSTANTS.TOKEN_EXPIRY_TIME
               });
             }
           }

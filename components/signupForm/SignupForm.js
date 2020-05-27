@@ -3,7 +3,7 @@
  */
 import { Component } from 'react';
 import Link from 'next/link';
-import Head from 'next/head';
+import Router from 'next/router';
 import CONSTANTS from '../../constants';
 import ROUTES from '../../routes.constants';
 import InputBar from '../inputBar/InputBar';
@@ -14,6 +14,8 @@ import ParagraphComponent from '../paragraphComponent/ParagraphComponent';
 import Button from '../button/Button';
 import Styles from '../loginForm/loginForm.module.scss';
 import appIcon from '../../assets/images/appIconWhite.svg';
+import { set as setCookies } from '../../utils/cookie';
+import API from '../../api.routes';
 
 /**
  * Defining the login form
@@ -21,11 +23,23 @@ import appIcon from '../../assets/images/appIconWhite.svg';
  */
 class LoginForm extends Component {
   /**
+   * Defining the initial state
+   */
+  state = {
+    showError: false
+  };
+
+  /**
    * Submit handler for login form
    */
   handleSubmit = e => {
     e.preventDefault();
   };
+
+  /**
+   * Function to push the route to the index route of the application
+   */
+  redirectToHome = () => Router.push(ROUTES.HOME);
 
   /**
    * Function to handle the input field data
@@ -36,6 +50,40 @@ class LoginForm extends Component {
     this.setState({
       [name]: value
     });
+  };
+
+  /**
+   * Function to change the state of the displaying error message
+   * @param {boolean} messageState
+   */
+  showErrorMessage = (messageState = false) => {
+    this.setState({ showError: messageState });
+  };
+
+  /**
+   * Function to handle the sign up button click
+   */
+  handleSignUpClick = async () => {
+    const { name, emailId, password, confirmPassword } = this.state;
+    if (password !== confirmPassword) {
+      this.showErrorMessage(true);
+    } else {
+      const res = await fetch(API.SIGN_UP, {
+        method: 'POST',
+        body: JSON.stringify({ name, emailId, password }),
+        headers: { 'Content-Type': 'application/json' }
+      });
+      const json = await res.json();
+      if (json.success) {
+        localStorage.setItem(CONSTANTS.LOCAL_STORAGE_TOKEN_NAME, json.token);
+        setCookies(
+          CONSTANTS.USER_COOKIE,
+          JSON.stringify(json.user),
+          json.cookieExpiryTime
+        );
+        this.redirectToHome();
+      }
+    }
   };
 
   /**
@@ -68,6 +116,7 @@ class LoginForm extends Component {
     ));
 
   render() {
+    const { showError } = this.state;
     return (
       <div className={Styles.loginFormContainer}>
         <HeadComponent />
@@ -79,6 +128,12 @@ class LoginForm extends Component {
           />
         </div>
         <div className={Styles.rightSection}>
+          {showError && (
+            <ParagraphComponent
+              paraContent={CONSTANTS.SIGN_UP_FORM.PASSWORD_ERROR}
+              customClass={Styles.errorMessage}
+            />
+          )}
           <ParagraphComponent
             paraContent={CONSTANTS.SIGN_UP_FORM.FORM_HEADING}
           />
@@ -99,6 +154,7 @@ class LoginForm extends Component {
               customClass={Styles.loginButton}
               value={CONSTANTS.SIGN_UP_FORM.SIGN_UP}
               disabled={this.getDisabledStatus()}
+              onClick={this.handleSignUpClick}
             />
           </div>
         </div>

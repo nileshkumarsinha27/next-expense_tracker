@@ -10,6 +10,7 @@ import ImageComponent from '../imageComponent/ImageComponent';
 import appIcon from '../../assets/images/appIcon.svg';
 import CONSTANTS from '../../constants';
 import ROUTES from '../../routes.constants';
+import { delete as deleteCookie } from '../../utils/cookie';
 import Styles from './sideNav.module.scss';
 
 /**
@@ -25,7 +26,8 @@ const SideNav = ({ customClass, navMenuData, ...props }) => {
   const handleListItemClick = title => {
     switch (title) {
       case CONSTANTS.LOGOUT:
-        localStorage.removeItem('token');
+        localStorage.removeItem(CONSTANTS.LOCAL_STORAGE_TOKEN_NAME);
+        deleteCookie(CONSTANTS.USER_COOKIE);
         Router.push(ROUTES.DEFAULT);
         break;
       default:

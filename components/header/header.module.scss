@@ -12,4 +12,10 @@
   left: 20%;
   box-shadow: 0 2px 4px -1px $box-shadow2, 0 4px 5px 0 $box-shadow1,
     0 1px 10px 0 $box-shadow;
+  .userName {
+    color: $white-color;
+    font-size: 18px;
+    padding: 0 50px;
+    box-sizing: border-box;
+  }
 }
