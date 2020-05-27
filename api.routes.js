@@ -7,7 +7,8 @@ const USER_ROUTE = `${BASE_URL}${ROUTES.API_ROUTES}/users`;
 
 const API = {
   LOGIN: `${USER_ROUTE}/login`,
-  SIGN_UP: `${USER_ROUTE}/signup`
+  SIGN_UP: `${USER_ROUTE}/signup`,
+  ADD_EXPENSE: `${USER_ROUTE}/update-expense`
 };
 
 export default API;

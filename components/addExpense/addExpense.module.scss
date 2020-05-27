@@ -25,6 +25,8 @@
     input {
       margin: 0 0 10px;
       border-radius: 5px;
+      padding: 20px 10px;
+      box-sizing: border-box;
     }
   }
   .addExpenseBtn {
@@ -36,5 +38,17 @@
     height: 40px;
     border-radius: 5px;
     cursor: pointer;
+    &:disabled {
+      cursor: default;
+      background-color: $disabled-color;
+      color: $grey-text;
+      animation: none;
+    }
+  }
+  .errorMessage {
+    color: $error-color;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 10px 0;
   }
 }

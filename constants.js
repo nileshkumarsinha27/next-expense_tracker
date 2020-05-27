@@ -76,6 +76,23 @@ const CONSTANTS = {
     BACK: 'Back'
   },
   SUBMIT: 'Submit',
-  LOGOUT: 'Logout'
+  LOGOUT: 'Logout',
+  ADD_EXPENSE: {
+    FORM_CONTENT: [
+      {
+        paraContent: 'Name of Expense',
+        name: 'name',
+        type: 'text',
+        placeHolder: 'Enter Expense'
+      },
+      {
+        paraContent: 'Amount Incurred',
+        name: 'value',
+        type: 'text',
+        placeHolder: 'Enter Amount'
+      }
+    ],
+    ADD_EXPENSE_ERROR: 'Please enter proper values'
+  }
 };
 export default CONSTANTS;

@@ -33,7 +33,7 @@ class InputBar extends Component {
   };
 
   render() {
-    const { placeHolderText, labelValue, name } = this.props;
+    const { placeHolderText, labelValue, name, type } = this.props;
     const { inputVal } = this.state;
     return (
       <Fragment>
@@ -47,7 +47,7 @@ class InputBar extends Component {
           id={name}
           name={name}
           className={Styles.inputComponent}
-          type="text"
+          type={type}
         />
       </Fragment>
     );
@@ -62,7 +62,8 @@ InputBar.propTypes = {
   placeHolderText: PropTypes.string,
   handleChange: PropTypes.func,
   name: PropTypes.string,
-  labelValue: PropTypes.string
+  labelValue: PropTypes.string,
+  type: PropTypes.string
 };
 
 /**
@@ -73,6 +74,7 @@ InputBar.defaultProps = {
   placeHolderText: '',
   handleChange: () => {},
   name: '',
+  type: 'text',
   labelValue: ''
 };
 
