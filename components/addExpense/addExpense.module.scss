@@ -27,6 +27,7 @@
       border-radius: 5px;
       padding: 20px 10px;
       box-sizing: border-box;
+      font-size: 14px;
     }
   }
   .addExpenseBtn {
@@ -38,6 +39,7 @@
     height: 40px;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 14px;
     &:disabled {
       cursor: default;
       background-color: $disabled-color;

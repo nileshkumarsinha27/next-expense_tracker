@@ -93,6 +93,11 @@ const CONSTANTS = {
       }
     ],
     ADD_EXPENSE_ERROR: 'Please enter proper values'
+  },
+  DASHBOARD: {
+    TITLE: 'EXPENSE TRACKER',
+    SUB_TITLE: 'Track expenses as you spend',
+    RECORD: 'Start Recording'
   }
 };
 export default CONSTANTS;
