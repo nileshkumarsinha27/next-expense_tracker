@@ -1,25 +1,16 @@
 /**
  * Importing the dependencies
  */
-import { Component } from 'react';
-import Router from 'next/router';
-import Layout from '../components/layout/Layout';
-import ROUTES from '../routes.constants';
 
+import Layout from '../components/layout/Layout';
+import Dashboard from '../components/dashboard/Dashboard';
 /**
  * The index route of the application
- * @extends Component
  */
-class Home extends Component {
-  componentDidMount() {
-    if (!localStorage.getItem('token')) {
-      Router.push(ROUTES.DEFAULT);
-    }
-  }
-
-  render() {
-    return <Layout />;
-  }
-}
+const Home = () => (
+  <Layout>
+    <Dashboard />
+  </Layout>
+);
 
 export default Home;

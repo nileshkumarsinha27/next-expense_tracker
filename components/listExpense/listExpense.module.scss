@@ -1,0 +1,11 @@
+@import '../../style/variables.scss';
+.listExpenseContainer {
+  .headingExpense {
+    position: absolute;
+    left: 22%;
+    top: 65px;
+    font-size: 24px;
+    color: $black-color;
+    font-weight: bold;
+  }
+}

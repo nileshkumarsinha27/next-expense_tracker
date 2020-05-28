@@ -12,6 +12,19 @@ class InputBar extends Component {
   };
 
   /**
+   * Defining the life cycle methods
+   */
+
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.resetInput !== this.props.resetInput &&
+      this.props.resetInput
+    ) {
+      this.handleInputChange();
+    }
+  }
+
+  /**
    * Function to render the container class list for the component
    */
   getContainerClass = () => cx([Styles.labelContainer, this.props.customClass]);
@@ -19,7 +32,7 @@ class InputBar extends Component {
   /**
    * Function the handle the change event for the input component
    */
-  handleInputChange = ({ target: { value } }) => {
+  handleInputChange = (value = '') => {
     this.setState(
       {
         inputVal: value
@@ -33,7 +46,7 @@ class InputBar extends Component {
   };
 
   render() {
-    const { placeHolderText, labelValue, name } = this.props;
+    const { placeHolderText, labelValue, name, type } = this.props;
     const { inputVal } = this.state;
     return (
       <Fragment>
@@ -42,12 +55,14 @@ class InputBar extends Component {
         </label>
         <input
           placeholder={placeHolderText}
-          onChange={this.handleInputChange}
+          onChange={({ target: { value } }) => {
+            this.handleInputChange(value);
+          }}
           value={inputVal}
           id={name}
           name={name}
           className={Styles.inputComponent}
-          type="text"
+          type={type}
         />
       </Fragment>
     );
@@ -62,7 +77,9 @@ InputBar.propTypes = {
   placeHolderText: PropTypes.string,
   handleChange: PropTypes.func,
   name: PropTypes.string,
-  labelValue: PropTypes.string
+  labelValue: PropTypes.string,
+  type: PropTypes.string,
+  resetInput: PropTypes.bool
 };
 
 /**
@@ -73,7 +90,9 @@ InputBar.defaultProps = {
   placeHolderText: '',
   handleChange: () => {},
   name: '',
-  labelValue: ''
+  type: 'text',
+  labelValue: '',
+  resetInput: false
 };
 
 export default InputBar;

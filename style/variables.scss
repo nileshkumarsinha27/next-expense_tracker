@@ -17,8 +17,24 @@ $box-shadow: rgba(0, 0, 0, 0.12);
 $box-shadow2: rgba(0, 0, 0, 0.2);
 $disabled-color: #d3d5d7;
 $grey-text: #969ba0;
+$error-color: #d63443;
 @mixin nav-list-font-style() {
   font-weight: normal;
   font-size: 18px;
   color: $black-color;
+}
+
+@keyframes toastAnimation {
+  0% {
+    right: -50%;
+  }
+  50% {
+    right: 10px;
+  }
+  75% {
+    right: 10px;
+  }
+  100% {
+    right: -50%;
+  }
 }

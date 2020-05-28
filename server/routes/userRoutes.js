@@ -52,7 +52,8 @@ router.route('/signup').post(({ body: { name, emailId, password } }, res) => {
                   name: userData.name,
                   emailId: userData.emailId,
                   id: userData._id
-                }
+                },
+                cookieExpiryTime: SERVER_CONSTANTS.TOKEN_EXPIRY_TIME
               });
             }
           }
@@ -89,7 +90,8 @@ router.route('/login').post(({ body: { emailId, password } }, res) => {
                   name: userData.name,
                   emailId: userData.emailId,
                   id: userData._id
-                }
+                },
+                cookieExpiryTime: SERVER_CONSTANTS.TOKEN_EXPIRY_TIME
               });
             }
           }
@@ -109,6 +111,23 @@ router
         await res.json({ expenseList });
       }
     });
+  });
+
+router
+  .route('/add-expense')
+  .put(checkToken, ({ body: { id, expense: { name, value } } }, res) => {
+    User.findByIdAndUpdate(
+      id,
+      { $push: { expenseList: { name, value } } },
+      { upsert: true },
+      async (error, data, next) => {
+        if (error) {
+          next(error);
+        } else {
+          await res.json({ message: 'Expense added successfully' });
+        }
+      }
+    );
   });
 
 module.exports = router;

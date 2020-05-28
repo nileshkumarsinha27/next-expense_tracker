@@ -13,6 +13,7 @@ import ParagraphComponent from '../paragraphComponent/ParagraphComponent';
 import HeadComponent from '../head/Head';
 import Button from '../button/Button';
 import API from '../../api.routes';
+import { set as setCookies } from '../../utils/cookie';
 import Styles from './loginForm.module.scss';
 import appIcon from '../../assets/images/appIconWhite.svg';
 
@@ -22,7 +23,7 @@ import appIcon from '../../assets/images/appIconWhite.svg';
  */
 class LoginForm extends Component {
   componentDidMount() {
-    if (localStorage.getItem('token')) {
+    if (localStorage.getItem(CONSTANTS.LOCAL_STORAGE_TOKEN_NAME)) {
       this.redirectToHome();
     }
   }
@@ -51,7 +52,12 @@ class LoginForm extends Component {
     });
     const json = await res.json();
     if (json.success) {
-      localStorage.setItem('token', json.token);
+      localStorage.setItem(CONSTANTS.LOCAL_STORAGE_TOKEN_NAME, json.token);
+      setCookies(
+        CONSTANTS.USER_COOKIE,
+        JSON.stringify(json.user),
+        json.cookieExpiryTime
+      );
       this.redirectToHome();
     }
   };
