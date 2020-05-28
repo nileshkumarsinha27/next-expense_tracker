@@ -114,16 +114,17 @@ router
   });
 
 router
-  .route('/update-expense')
+  .route('/add-expense')
   .put(checkToken, ({ body: { id, expense: { name, value } } }, res) => {
     User.findByIdAndUpdate(
       id,
       { $push: { expenseList: { name, value } } },
-      async (error, { expenseList }, next) => {
+      { upsert: true },
+      async (error, data, next) => {
         if (error) {
           next(error);
         } else {
-          await res.json({ expenseList });
+          await res.json({ message: 'Expense added successfuy' });
         }
       }
     );

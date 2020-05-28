@@ -20,7 +20,9 @@ class AddExpense extends Component {
    * Declare the initital state
    */
   state = {
-    showError: false
+    showError: false,
+    showToast: false,
+    toastMessage: ''
   };
 
   /**
@@ -56,6 +58,18 @@ class AddExpense extends Component {
   };
 
   /**
+   * Function to display the success of add expense
+   * @param {boolean} toastStatus
+   * @param {string} toastMessage
+   */
+  setToast = (toastStatus, toastMessage) => {
+    this.setState({
+      showToast: toastStatus,
+      toastMessage
+    });
+  };
+
+  /**
    * Function to add expense to the system
    */
   addExpense = async () => {
@@ -75,6 +89,7 @@ class AddExpense extends Component {
         }
       });
       const json = await res.json();
+      this.setToast(true, json.message);
     } else {
       this.setShowError(true);
     }

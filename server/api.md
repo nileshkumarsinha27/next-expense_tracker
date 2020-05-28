@@ -43,7 +43,7 @@ Request Body:
 
 - Update expense details
   PUT
-  /api/users/update-expense
+  /api/users/add-expense
 
   Request Body:
 

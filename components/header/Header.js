@@ -2,10 +2,12 @@
  * Importing the dependencies
  */
 import { Component } from 'react';
+import Router from 'next/router';
+import ROUTES from '../../routes.constants';
+import CONSTANTS from '../../constants';
 import Styles from './header.module.scss';
 import ParagraphComponent from '../paragraphComponent/ParagraphComponent';
 import { get as getCookie } from '../../utils/cookie';
-import CONSTANTS from '../../constants';
 
 /**
  * Defining the header component
@@ -23,7 +25,12 @@ class Header extends Component {
    */
   componentDidMount() {
     const user = JSON.parse(getCookie(CONSTANTS.USER_COOKIE));
-    this.setState({ user });
+    if (user) {
+      this.setState({ user });
+    }
+    if (!localStorage.getItem(CONSTANTS.LOCAL_STORAGE_TOKEN_NAME)) {
+      Router.push(ROUTES.DEFAULT);
+    }
   }
 
   /**
