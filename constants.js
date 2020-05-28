@@ -98,6 +98,13 @@ const CONSTANTS = {
     TITLE: 'EXPENSE TRACKER',
     SUB_TITLE: 'Track expenses as you spend',
     RECORD: 'Start Recording'
+  },
+  LIST_EXPENSE: {
+    TITLE: 'Expense List',
+    TABLE_HEADERS: {
+      name: 'Expense Name',
+      value: 'Expense Value'
+    }
   }
 };
 export default CONSTANTS;
