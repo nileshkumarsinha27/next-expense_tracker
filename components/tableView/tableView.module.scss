@@ -1,0 +1,43 @@
+@import '../../style/variables.scss';
+.tableContainer {
+  border-collapse: collapse;
+  border-spacing: 0 0.8rem;
+  width: 50%;
+  display: table;
+  font-size: 13px;
+  margin: 50px auto;
+  table-layout: fixed;
+  box-shadow: 0 0 31px 0 $box-shadow1;
+  th {
+    color: $black-color;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 0 24px;
+    white-space: nowrap;
+    overflow: hidden;
+
+    vertical-align: middle;
+  }
+  tr {
+    height: 40px;
+    border-radius: 10px;
+    color: $black-color;
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+  }
+  td {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 14px;
+    padding: 0 24px;
+  }
+  tbody {
+    tr {
+      &:nth-child(2n) {
+        background: $primary-color;
+        color: $white-color;
+      }
+    }
+  }
+}

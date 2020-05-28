@@ -1,0 +1,22 @@
+@import '../../style/variables.scss';
+.headerContainer {
+  width: 80%;
+  height: 60px;
+  box-sizing: border-box;
+  background: $primary-color;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: fixed;
+  top: 0;
+  left: 20%;
+  box-shadow: 0 2px 4px -1px $box-shadow2, 0 4px 5px 0 $box-shadow1,
+    0 1px 10px 0 $box-shadow;
+  z-index: 1;
+  .userName {
+    color: $white-color;
+    font-size: 18px;
+    padding: 0 50px;
+    box-sizing: border-box;
+  }
+}

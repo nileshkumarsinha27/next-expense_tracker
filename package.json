@@ -1,0 +1,44 @@
+{
+  "name": "expensetracker",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon server/index.js",
+    "build": "next build",
+    "start": "cross-env NODE_ENV=production nodemon server/index.js",
+    "lint": "eslint --fix **/*.js --ignore-pattern node_modules/"
+  },
+  "dependencies": {
+    "babel-eslint": "^10.1.0",
+    "bcrypt": "^4.0.1",
+    "body-parser": "^1.19.0",
+    "classnames": "^2.2.6",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "file-loader": "^6.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.14",
+    "next": "9.4.0",
+    "next-images": "^1.4.0",
+    "nodemon": "^2.0.4",
+    "prop-types": "^15.7.2",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-html-parser": "^2.0.2",
+    "sass": "^1.26.5",
+    "svg-inline-loader": "^0.8.2"
+  },
+  "devDependencies": {
+    "eslint": "4.19.1",
+    "eslint-config-airbnb": "17.0.0",
+    "eslint-config-prettier": "2.9.0",
+    "eslint-plugin-import": "2.13.0",
+    "eslint-plugin-jsx-a11y": "6.1.2",
+    "eslint-plugin-prettier": "2.7.0",
+    "eslint-plugin-react": "7.10.0",
+    "prettier": "1.15.3",
+    "stylelint-config-prettier": "4.0.0",
+    "stylelint-config-recommended-scss": "3.2.0",
+    "stylelint-config-standard": "18.2.0"
+  }
+}

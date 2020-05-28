@@ -1,0 +1,49 @@
+@import '../../style/variables.scss';
+.sideNavContainer {
+  box-sizing: border-box;
+  width: 20%;
+  height: 100%;
+  min-height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  border-right: 1px solid $border-color;
+  .titleContainer {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    height: 60px;
+    border-bottom: 1px solid $border-color;
+  }
+  .headerImage {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    box-sizing: border-box;
+  }
+  .headingText {
+    color: $black-color;
+    font-size: 32px;
+  }
+  .navList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    height: calc(100% - 60px);
+    li {
+      @include nav-list-font-style();
+      width: 100%;
+      padding: 20px 0;
+      box-sizing: border-box;
+      text-align: center;
+      cursor: pointer;
+      a {
+        width: 100%;
+        display: block;
+        height: inherit;
+        box-sizing: border-box;
+      }
+    }
+  }
+}

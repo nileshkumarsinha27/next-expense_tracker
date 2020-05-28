@@ -1,0 +1,14 @@
+@import '../../style/variables.scss';
+.toastContainer {
+  position: fixed;
+  top: 100px;
+  right: 10px;
+  background: $primary-color;
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 20px;
+  animation: toastAnimation 5s ease;
+  p {
+    color: $white-color;
+  }
+}
