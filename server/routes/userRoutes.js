@@ -124,7 +124,7 @@ router
         if (error) {
           next(error);
         } else {
-          await res.json({ message: 'Expense added successfuy' });
+          await res.json({ message: 'Expense added successfully' });
         }
       }
     );

@@ -6,6 +6,7 @@ import CONSTANTS from '../../constants';
 import Paragraph from '../paragraphComponent/ParagraphComponent';
 import Input from '../inputBar/InputBar';
 import Button from '../button/Button';
+import ToastComponent from '../toastComponent/ToastComponent';
 import API from '../../api.routes';
 import { get as getCookie } from '../../utils/cookie';
 import Styles from './addExpense.module.scss';
@@ -22,6 +23,7 @@ class AddExpense extends Component {
   state = {
     showError: false,
     showToast: false,
+    resetInputState: false,
     toastMessage: ''
   };
 
@@ -38,7 +40,12 @@ class AddExpense extends Component {
    * @param {string} name
    */
   handleInputChange = (value, name) => {
-    this.setState({ [name]: value });
+    this.setState({ [name]: value }, () => {
+      const { resetInputState } = this.state;
+      if (resetInputState) {
+        this.resetInput();
+      }
+    });
   };
 
   /**
@@ -60,13 +67,29 @@ class AddExpense extends Component {
   /**
    * Function to display the success of add expense
    * @param {boolean} toastStatus
-   * @param {string} toastMessage
+   * @param {string} message
    */
-  setToast = (toastStatus, toastMessage) => {
-    this.setState({
-      showToast: toastStatus,
-      toastMessage
-    });
+  setToast = (toastStatus, message = '') => {
+    this.setState(
+      {
+        showToast: toastStatus,
+        toastMessage: message
+      },
+      () => {
+        const { toastMessage } = this.state;
+        if (toastMessage === '') {
+          this.resetInput(true);
+        }
+      }
+    );
+  };
+
+  /**
+   * Function to clear input value after successful API call
+   * @param {boolean} resetState
+   */
+  resetInput = (resetState = false) => {
+    this.setState({ resetInputState: resetState });
   };
 
   /**
@@ -120,6 +143,7 @@ class AddExpense extends Component {
         placeHolderText={formElem.placeHolder}
         handleChange={this.handleInputChange}
         labelValue={formElem.paraContent}
+        resetInput={this.state.resetInputState}
         key={index}
       />
     ));
@@ -135,7 +159,7 @@ class AddExpense extends Component {
   );
 
   render() {
-    const { showError } = this.state;
+    const { showError, showToast, toastMessage } = this.state;
     return (
       <div className={Styles.addExpenseContainer}>
         {showError && this.renderErrorMessage()}
@@ -154,6 +178,14 @@ class AddExpense extends Component {
           disabled={this.getDisabledStatus()}
           onClick={this.addExpense}
         />
+        {showToast && (
+          <ToastComponent
+            toastMessage={toastMessage}
+            onAnimationEndhandler={() => {
+              this.setToast(false);
+            }}
+          />
+        )}
       </div>
     );
   }

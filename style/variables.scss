@@ -23,3 +23,18 @@ $error-color: #d63443;
   font-size: 18px;
   color: $black-color;
 }
+
+@keyframes toastAnimation {
+  0% {
+    right: -50%;
+  }
+  50% {
+    right: 10px;
+  }
+  75% {
+    right: 10px;
+  }
+  100% {
+    right: -50%;
+  }
+}
